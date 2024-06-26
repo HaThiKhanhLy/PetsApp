@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.NewPage1"
+             Title="Admin Page"
+             Shell.NavBarIsVisible="False">
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="exit.png" Order="Primary" Priority="1" Clicked="Logout_Clicked"/>
+    </ContentPage.ToolbarItems>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+         
+        <!-- Header Section -->
+        <StackLayout Grid.Column="0" Grid.Row="0" BackgroundColor="#3498db" Padding="10">
+            <Label Text="PetHouse" FontFamily="baby" FontSize="24" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Image Source="exit.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Logout_Clicked"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <Grid ColumnDefinitions="Auto,*" Grid.Row="1" ColumnSpacing="10">
+        <!-- Sidebar Section -->
+            <StackLayout Grid.Column="0" BackgroundColor="Orange" Padding="10" Spacing="20">
+                <HorizontalStackLayout Spacing="10">
+                    <Image Source="dog.png" WidthRequest="25" Grid.Column="3" HeightRequest="25" Aspect="AspectFit"  HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GotoListPet" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="List Pet" BackgroundColor="Orange" TextColor="White" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GotoListPet"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Image Source="listorder.png" WidthRequest="25" Grid.Column="3" HeightRequest="25" Aspect="AspectFit"  HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ListOrder_Clicked" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Text="List Order" BackgroundColor="Orange" TextColor="White" FontAttributes="Bold">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ListOrder_Clicked"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="10">
+                    <Image Source="user.png" WidthRequest="25" Grid.Column="3" HeightRequest="25" Aspect="AspectFit"  HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GotoUserList" />
+                    </Image.GestureRecognizers>
+                </Image>
+                    <Label Text="List User" BackgroundColor="Orange" FontAttributes="Bold" TextColor="White">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GotoUserList"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto">
+                <HorizontalStackLayout Spacing="20" Grid.Row="0" Margin="20,0,0,0">
+                    <StackLayout Margin="0,40,0,0" HorizontalOptions="Start">
+                <Label 
+                    Text="TOTAL ORDER"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    FontAttributes="Bold"/>
+                    <Frame 
+                     BackgroundColor="Aquamarine"
+                     VerticalOptions="Center" 
+                     CornerRadius="10"
+                     HorizontalOptions="Center" 
+                      HeightRequest="100"
+                      Margin="0,20,0,0">
+
+                    <Label x:Name="totalOrderLabel" Text="" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center" />
+                </Frame>
+                <!-- Add more content here as needed -->
+            </StackLayout>
+                    <StackLayout Margin="0,40,0,0" HorizontalOptions="Center">
+                    <Label 
+                        Text="TOTAL PRODUCTS"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"/>
+                    <Frame 
+                        BackgroundColor="LightPink"
+                        VerticalOptions="Center" 
+                        CornerRadius="10"
+                        HorizontalOptions="Center" 
+                         HeightRequest="100" Margin="0,20,0,0">
+                        <Label x:Name="totalProductsLabel" Text="" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center" />
+                    </Frame>
+                </StackLayout>
+                    <StackLayout Margin="0,40,0,0" HorizontalOptions="End">
+                        <Label 
+                        Text="REVENUE"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center"
+                            FontAttributes="Bold"/>
+                        <Frame 
+                         BackgroundColor="BlanchedAlmond"
+                         VerticalOptions="Center" 
+                         CornerRadius="10"
+                         HorizontalOptions="Center" 
+                          HeightRequest="100"
+                          Margin="0,20,0,0">
+                            <Label x:Name="revenueLabel" Text="" FontAttributes="Bold" FontSize="16" HorizontalTextAlignment="Center"/>
+                        </Frame>
+                        <!-- Add more content here as needed -->
+                    </StackLayout>  
+                </HorizontalStackLayout>
+                <Label Grid.Row="1" Text="Top 10 new pets" FontAttributes="Bold" FontSize="18" Margin="20,30,0,10"></Label>
+            <CollectionView Grid.Row="2" x:Name="PetFavorites" ItemsLayout="HorizontalList">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <Border Margin="10" StrokeShape="RoundRectangle 10" Stroke="#F7F8F7" StrokeThickness="2" BackgroundColor="White">
+                            <Border.Shadow>
+                                <Shadow Brush="#F7F8F7" Opacity=".7" Radius="100" Offset="0,0">
+
+                                </Shadow>
+                            </Border.Shadow>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <!--<Border Grid.Row="0" Margin="10" StrokeShape="RoundRectangle 20" Stroke="#F7F8F7" StrokeThickness="2" BackgroundColor="White" Padding="5">
+                                    <Border.Shadow>
+                                        <Shadow Brush="#F7F8F7" Opacity="5" Radius="200" Offset="0,0"/>
+                                    </Border.Shadow>-->
+                                    <Image Grid.Row="0" Source="{Binding Image}"  Aspect="AspectFill"
+                                           HeightRequest="150" WidthRequest="150"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" Margin="10"/>
+                                    <!--</Border>-->
+                                    <Label Grid.Row="1" WidthRequest="200" Grid.Column="0" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Start" FontSize="18" Text="{Binding NamePets}" Margin="10"  LineBreakMode="WordWrap"/>
+
+                                <HorizontalStackLayout Grid.Row="2" Padding="10">
+                                    <Label HorizontalOptions="End" FontAttributes="Bold" FontSize="16" TextColor="#BE0425" VerticalOptions="End" Text="{Binding Price}"/>
+                                    <Label HorizontalOptions="End" FontAttributes="Bold" FontSize="16" TextColor="#BE0425" VerticalOptions="End" Text="$"/>
+                                </HorizontalStackLayout>
+                                <Grid Grid.Row="3" ColumnDefinitions="*,*" Padding="10">
+                                    <Label Grid.Column="0" HorizontalOptions="Start" FontAttributes="Bold" VerticalOptions="Start" Text="{Binding Species}"/>
+                                    <Image Grid.Column="1" HorizontalOptions="End" VerticalOptions="End" WidthRequest="20" HeightRequest="20" Source="heart.png"/>
+
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</ContentPage>

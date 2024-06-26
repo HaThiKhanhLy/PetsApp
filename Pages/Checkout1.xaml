@@ -1,0 +1,82 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.Checkout1"
+             Title="Checkout"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="10">
+            <Grid Margin="10">
+                <Image  Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GotoBack"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.ColumnSpan="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Text="Checkout"/>
+            </Grid>
+
+            <!-- Hiển thị danh sách sản phẩm -->
+            <ListView ItemsSource="{Binding CartItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" ColumnDefinitions="*,*,*,*,*">
+                                <Image Grid.Column="0" Source="{Binding Pet.Image}"  Aspect="AspectFill"
+                                    HeightRequest="150" WidthRequest="150"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"/>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding Pet.NamePets}" FontSize="18" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Pet.Price, StringFormat='${0:N2}'}" FontSize="16" TextColor="#BE0425" FontAttributes="Bold"/>
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Label Text="Quantity: " FontSize="16"/>
+                                        <Label Text="{Binding Quantity}" FontSize="16"/>
+                                    </HorizontalStackLayout>
+                                    
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<Địa chỉ nhận hàng-->
+            <Label Text="Delivery address" FontSize="16" FontAttributes="Bold"></Label>
+            <Entry Placeholder="Address" x:Name="AddressEntry" />
+            <Label Text="Recipient's name" FontSize="16" FontAttributes="Bold"></Label>
+            <Entry Placeholder="Name" x:Name="NameEntry" />
+            <Label Text="Recipient phone" FontSize="16" FontAttributes="Bold"></Label>
+            <Entry Placeholder="Phone" x:Name="PhoneEntry" />
+            <!-- Hiển thị các hình thức thanh toán -->
+            <Picker Title="Select Payment Method" SelectedIndexChanged="PaymentMethodSelected">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>VnPay</x:String>
+                        <x:String>Momo</x:String>
+                        <x:String>Cash on Delivery</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <!-- Hiển thị tổng đơn hàng -->
+            <StackLayout Margin="0,20,0,0">
+                <Grid>
+                    <Label Text="Total:" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="{Binding TotalPrice}" FontSize="18" FontAttributes="Bold" HorizontalOptions="End"/>
+                </Grid>
+
+                <Grid>
+                    <Label Text="Shipping Fee:" FontSize="18" FontAttributes="Bold"/>
+                    <Label Text="$20" FontSize="18" FontAttributes="Bold" HorizontalOptions="End"/>
+                </Grid>
+
+                <Grid>
+                    <Label Text="Total order:" FontSize="18" FontAttributes="Bold"/>
+                    <Label x:Name="TotalOrders" Text="{Binding TotalOrder}" FontSize="18" FontAttributes="Bold" HorizontalOptions="End"/>
+                </Grid>
+            </StackLayout>
+
+           
+
+            <!-- Nút Checkout -->
+            <Button Text="Checkout" BackgroundColor="Orange" HorizontalOptions="FillAndExpand" Margin="0,20,0,0" Clicked="CheckoutButton"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

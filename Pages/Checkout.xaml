@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.Checkout"
+             Title="Checkout"
+             Shell.NavBarIsVisible="False"
+            >
+    <VerticalStackLayout Padding="10" Spacing="10">
+        <Grid ColumnDefinitions="*,*,*" Margin="10">
+            <Image  Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Goback" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Text="Checkout" VerticalTextAlignment="Center"></Label>
+            
+        </Grid>
+      
+            <HorizontalStackLayout Spacing="150" Padding="10">
+                <Image x:Name="ImageLa" Source="dog.png"  Aspect="AspectFill"
+                        HeightRequest="150" WidthRequest="150"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"/>
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="NameLabel" FontSize="18" FontAttributes="Bold" Text="Cho mat xe"></Label>
+                <Label x:Name="Price" FontSize="16" FontAttributes="Bold" TextColor="#BE0425" Text="$0"></Label>
+                    <Label x:Name="SpeciesLabel" FontSize="16" Text="0"></Label>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Quantity: " HorizontalOptions="Center" FontSize="16"></Label>
+                        <Label Text="1" HorizontalOptions="Center" FontSize="16"></Label>
+                        
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+
+        <Label Text="Delivery address" FontSize="16" FontAttributes="Bold"></Label>
+        <Entry Placeholder="Address" x:Name="AddressEntry" />
+        <Label Text="Recipient's name" FontSize="16" FontAttributes="Bold"></Label>
+        <Entry Placeholder="Name" x:Name="NameEntry" />
+        <Label Text="Recipient phone" FontSize="16" FontAttributes="Bold"></Label>
+        <Entry Placeholder="Phone" x:Name="PhoneEntry" />
+
+        <!-- Hiển thị các hình thức thanh toán -->
+        <Picker Title="Select Payment Method" SelectedIndexChanged="PaymentMethodSelected">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>VnPay</x:String>
+                    <x:String>Momo</x:String>
+                    <x:String>Cash on Delivery</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <!-- Hiển thị tổng đơn hàng -->
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
+            <Label Grid.Column="0" Grid.Row="0" Text="Total:" FontSize="18" FontAttributes="Bold" Margin="0,20,0,0"/>
+            <Label HorizontalOptions="End" x:Name="Total" Grid.Column="1" Grid.Row="0" Text="Total: $20000" FontSize="18" FontAttributes="Bold" Margin="0,20,0,0"/>
+
+            <!-- Hiển thị chi phí vận chuyển -->
+            <Label Grid.Column="0" Grid.Row="1" Text="Shipping Fee:" FontSize="18" FontAttributes="Bold"/>
+            <Label HorizontalOptions="End" Grid.Column="1" Grid.Row="1" Text="$20" FontSize="18" FontAttributes="Bold"/>
+
+            <Label Grid.Column="0" Grid.Row="2" Text="Total order:" FontSize="18" FontAttributes="Bold"/>
+            <Label HorizontalOptions="End" Grid.Column="1" Grid.Row="2" x:Name="TotalLabel" Text="Total order: $5" FontSize="18" FontAttributes="Bold"/>
+        </Grid>
+        <!-- Nút Checkout -->
+        <Button Text="Checkout" BackgroundColor="Orange" HorizontalOptions="FillAndExpand" Margin="0,20,0,0" Clicked="CheckoutButton"/>
+    </VerticalStackLayout>
+</ContentPage>

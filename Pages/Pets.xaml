@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PetsApp.ViewModel"
+             xmlns:model="clr-namespace:PetsApp.Models"
+             x:Class="PetsApp.Pages.Pets"
+             Title="Pets"
+             x:DataType="vm:PetsVM"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+        <Grid Grid.Row="0" ColumnDefinitions="*,*,*" Margin="10">
+            <!--<Image Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Goback" />
+                </Image.GestureRecognizers>
+            </Image>-->
+            <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" Text="List Pets"></Label>
+        </Grid>
+        <CollectionView x:Name="GetAllPets" Grid.Row="1" ItemsLayout="VerticalGrid,1" SelectionMode="None" ItemsSource="{Binding Pets}" SelectionChanged="OnPetItemTapped">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:PetsModel">
+                    <Border Margin="10" StrokeShape="RoundRectangle 20" Stroke="#F7F8F7" StrokeThickness="2" BackgroundColor="White" Padding="5">
+                        <Border.Shadow>
+                            <Shadow Brush="#F7F8F7" Opacity="5" Radius="200" Offset="0,0"/>
+                        </Border.Shadow>
+                       
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <Frame Grid.Column="0" Margin="0,10,0,0" CornerRadius="10" HeightRequest="200" WidthRequest="200" HasShadow="True" VerticalOptions="Center">
+                                <Image Aspect="AspectFill" Source="{Binding Image}" HeightRequest="150" WidthRequest="150">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnPetItemTapped" CommandParameter="{Binding ID}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" Margin="0,10,0,0" Spacing="5" Padding="5">
+                                <Label Text="{Binding NamePets}" FontAttributes="Bold" FontSize="20" VerticalOptions="Center" />
+                                <Label TextColor="#BE0425" Text="{Binding Price}" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" />
+                                <Label Text="{Binding Species}" FontAttributes="Bold" VerticalOptions="Center" />
+                                <HorizontalStackLayout Spacing="10" Margin="0,30,0,0">
+                                    <Border StrokeShape="RoundRectangle 10" StrokeThickness="0" BackgroundColor="Orange" Padding="20,5,20,5">
+                                        <Image HeightRequest="30" WidthRequest="30" Source="cartwhite.png" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnAddToCartTapped" CommandParameter="{Binding ID}" />
+                                            </Image.GestureRecognizers>
+
+                                        </Image>
+                                    </Border>
+                                    <Frame CornerRadius="10" BackgroundColor="Orange" Padding="15" HasShadow="False" HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Label Text="View pet details" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="GotoDetails" CommandParameter="{Binding ID}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </Frame>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

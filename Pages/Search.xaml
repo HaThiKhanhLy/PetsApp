@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.Search"
+
+             Title="Search"
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout Spacing="10" Margin="10">
+        <Grid ColumnDefinitions="*,*,*">
+            
+            <Image Grid.Column="0" HorizontalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Goback" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" Text="Pets Search"></Label>
+        </Grid>
+        <Border StrokeShape="RoundRectangle 30" StrokeThickness="2" Stroke="Black" HeightRequest="50" Margin="10">
+            <SearchBar 
+                x:Name="searchBar"
+                Placeholder="Search pets by name" 
+                TextChanged="SearchBar_TextChanged" 
+                VerticalOptions="Center"
+                TextColor="Black"/>
+
+        </Border>
+        <Label x:Name="NotFoundLabel" Text="--------------Not found pet--------------" IsVisible="False" TextColor="Red" FontSize="18" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+    </VerticalStackLayout>
+</ContentPage>

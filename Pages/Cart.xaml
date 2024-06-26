@@ -1,0 +1,53 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.Cart"
+             Title="Cart"
+             Shell.NavBarIsVisible="False">
+    <ScrollView VerticalScrollBarVisibility="Always">
+        <VerticalStackLayout Padding="10">
+        <Grid  ColumnDefinitions="*,*,*" Margin="10">
+            <Image Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GobackHome" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" Text="Cart"></Label>
+
+        </Grid>
+        <!-- Loại bỏ ScrollView và sử dụng HasUnevenRows trong ListView -->
+        <ListView x:Name="CartListView" VerticalOptions="FillAndExpand" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10" ColumnDefinitions="*,*,*,*,*" RowSpacing="10">
+                            <Image Grid.Column="0" Source="{Binding Pet.Image}"  Aspect="AspectFill"
+                                   HeightRequest="150" WidthRequest="150"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"/>
+                                <StackLayout Grid.Column="1" Spacing="10">
+                                <Label Text="{Binding Pet.NamePets}" FontSize="18" FontAttributes="Bold"/>
+                                <Label Text="{Binding Pet.Price, StringFormat='${0:N2}'}" FontSize="16" FontAttributes="Bold" TextColor="#BE0425"/>
+                                <Label Text="{Binding Pet.Species}" FontSize="16"/>
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <Button Text="-" Clicked="DecreaseQuantityClicked" BackgroundColor="LightGray" FontSize="16" TextColor="Black"/>
+                                        <Label Text="{Binding Quantity}" x:Name="QuantityLabel" HorizontalOptions="Center" VerticalTextAlignment="Center"/>
+                                        <Button Text="+" Clicked="IncreaseQuantityClicked" BackgroundColor="LightGray" FontSize="16" TextColor="Black"/>
+                                </StackLayout>
+                            </StackLayout>
+                                <Grid Grid.Column="4" RowDefinitions="*">
+                                    <Image Grid.Row="0" HorizontalOptions="End" Source="remove.png" WidthRequest="25" HeightRequest="25">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="RemoveItemTapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!-- Nút để xóa sản phẩm -->
+            <Button Text="Checkout" BackgroundColor="Orange" Clicked="CheckoutClicked"/>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

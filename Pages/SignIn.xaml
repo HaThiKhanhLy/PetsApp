@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.SignIn"
+             Title="SignIn"
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout Spacing="20" Margin="20">
+        <Image Source="back_arrow.svg" WidthRequest="20" HeightRequest="20" HorizontalOptions="Start"></Image>
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" Padding="5">
+            <Label HorizontalOptions="Center"
+               FontFamily="OpenSansSemibold"
+               FontSize="26"
+               >Sign in account today </Label>
+        <Image Source="paw.svg"
+       Aspect="AspectFill"
+       WidthRequest="25"
+       HeightRequest="25"
+       HorizontalOptions="Center"></Image>
+        </HorizontalStackLayout>
+            <Label HorizontalOptions="Center"
+                FontFamily="OpenSansSemibold"
+                   TextColor="Gray">A world of furry possibilities awaits you</Label>
+        <Label FontAttributes="Bold">Email</Label>
+        <Grid ColumnDefinitions="Auto,*">
+            <Image Source="mail.png" Grid.Column="0" Grid.ColumnSpan="1" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="Start" Margin="5" />
+            <Entry Placeholder="Enter your mail" x:Name="Entry_Email" TextColor="Black" Grid.Column="1"></Entry>
+        </Grid>
+        <Label FontAttributes="Bold">Password</Label>
+        <Grid ColumnDefinitions="Auto,*,Auto" >
+            <Image Source="lock.png" Grid.Column="0" Grid.ColumnSpan="1" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="Start" Margin="5" />
+            <Entry Placeholder="Enter your password" x:Name="Entry_Password" Grid.Column="1" IsPassword="True" TextColor="Black"/>
+            <Image Source="hide.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Margin="5" Grid.Column="2"/>
+
+        </Grid>
+
+
+
+        <VerticalStackLayout x:Name="RepasswordGrid" IsVisible="False" Spacing="20">
+            <Label FontAttributes="Bold" Text="Repassword"></Label>
+            <Grid ColumnDefinitions="Auto,*">
+                <Image Source="lock.png" Grid.Column="0" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" HorizontalOptions="Start" Margin="5" />
+                <Entry Placeholder="Enter your password" TextColor="Black" Grid.Column="1" IsPassword="True"/>
+            </Grid>
+        </VerticalStackLayout>
+
+
+
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <CheckBox WidthRequest="20" HeightRequest="20" Color="Orange"></CheckBox>
+            <Label Text="I agree to Terms  Conditions"> </Label>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Label Text="Already have an account ?"/>
+            <Label x:Name="SignInUp" TextColor="Orange" FontAttributes="Bold" Text="Sign up">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SignUp"/>
+                </Label.GestureRecognizers>
+            </Label>
+           
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Label TextColor="Orange" FontAttributes="Bold" Text="I forgot password">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ForgotPassword"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Line X1="0" Y1="10" X2="150" Y2="10" Stroke="LightGray" StrokeThickness="2" />
+            <Label Text="Or"/>
+            <Line X1="0" Y1="10" X2="150" Y2="10" Stroke="LightGray" StrokeThickness="2" />
+        </HorizontalStackLayout>
+        <Button x:Name="btnSignInUp" Text="Sign in" BackgroundColor="Orange" CornerRadius="30" Clicked="GotoHome"/>
+
+    </VerticalStackLayout>
+</ContentPage>

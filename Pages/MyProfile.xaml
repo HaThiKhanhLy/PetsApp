@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.MyProfile"
+             Title="MyProfile"
+             Shell.NavBarIsVisible="False">
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout Margin="20" Padding="10" Spacing="20">
+            <Grid ColumnDefinitions="*,*,*">
+                <Image  Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Goback" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Text="Update User" VerticalTextAlignment="Center"></Label>
+
+            </Grid>
+            <Entry Placeholder="Full Name" x:Name="FullNameEntry" />
+            <Entry Placeholder="Phone" x:Name="PhoneEntry" />
+            <Entry Placeholder="Email" x:Name="EmailEntry" />
+            <Entry Placeholder="Password" x:Name="PasswordEntry" />
+            <Picker Title="Address" x:Name="AddressPicker" />
+            <DatePicker x:Name="DateOfBirthPicker" />
+            <!-- Sử dụng Picker để chọn giới tính -->
+            <Picker x:Name="GenderPicker" Title="Gender">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Male</x:String>
+                        <x:String>Female</x:String>
+                        <x:String>Other</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Button Text="Update" BackgroundColor="Orange" Clicked="UpdateButton_Clicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

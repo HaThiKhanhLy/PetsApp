@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.Orders"
+             Title="Orders"
+              Shell.NavBarIsVisible="False">
+    <!--<ContentPage.BindingContext>
+        <vm:OrdersVM x:Name="OrdersViewModel" />
+    </ContentPage.BindingContext>-->
+
+    <StackLayout>
+        <Label Text="Orders" FontSize="Title" HorizontalTextAlignment="Center" />
+
+        <ListView x:Name="OrdersListView" ItemTapped="OnOrderTapped" Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame BorderColor="Gray"
+                           CornerRadius = "10"
+                           HasShadow="True"
+                           Margin="10"
+                           >
+                            <HorizontalStackLayout Spacing="20">
+                                <Image 
+                                 Source="dog.png" 
+                                  Aspect="AspectFill"
+                                   WidthRequest="150"
+                                   HeightRequest="150"/>
+
+                                <Grid Margin="10,0,0,0" ColumnDefinitions="*,*" RowDefinitions="*,*,*,*" RowSpacing="5" ColumnSpacing="20">
+                                    <Label Grid.Column="0" Grid.Row="0" Text="Order ID : " />
+                                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Id}" />
+                                    <Label Grid.Column="0" Grid.Row="1" Text="Order date : " TextColor="Gray" />
+                                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Date}" TextColor="Gray" />
+                                    <Label Grid.Column="0" Grid.Row="2" Text="Order status : " TextColor="Gray" />
+                                    <Label Grid.Column="1" Grid.Row="2" Text="{Binding Status}" TextColor="Gray" />
+                                    <Label Grid.Column="0" Grid.Row="3" Text="Order total: " TextColor="Red" />
+                                    <Label Grid.Column="1" Grid.Row="3" Text="{Binding Total}" TextColor="Red" />
+                                </Grid>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

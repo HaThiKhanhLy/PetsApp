@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.Admin.ListUserAdmin"
+             Title="ListUserAdmin"
+             Shell.NavBarIsVisible="False">
+    <StackLayout>
+        <Grid ColumnDefinitions="*,*,*" Margin="20">
+            <Image  Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Goback" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Text="List user" VerticalTextAlignment="Center"></Label>
+
+        </Grid>
+        <ListView x:Name="UserListView">
+            <ListView.Header>
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="ID" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                    <Label Text="FullName" Grid.Column="1" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                    <Label Text="Email" Grid.Column="2" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                    <Label Text="Phone" Grid.Column="3" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                    <Label Text="Password" Grid.Column="4" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                    <Label Text="Address" Grid.Column="5" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                    <Label Text="Day Of Birth" Grid.Column="6" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                    <Label Text="Gender" Grid.Column="7" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame HasShadow="False" Padding="0" Margin="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <BoxView Color="LightGray" HeightRequest="1" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" />
+
+                                <Label Text="{Binding ID}" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" />
+                                <BoxView Color="LightGray" HeightRequest="1" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" />
+                                <Label Text="{Binding FullName}" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" />
+                                <BoxView Color="LightGray" HeightRequest="1" Grid.Row="0" Grid.Column="2" HorizontalOptions="FillAndExpand" />
+                                <Label Text="{Binding Email}" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" />
+
+                                <BoxView Color="LightGray" HeightRequest="1" Grid.Row="0" Grid.Column="3" HorizontalOptions="FillAndExpand" />
+                                <Label Text="{Binding Phone}" Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center" />
+                                <BoxView Color="LightGray" HeightRequest="1" Grid.Row="0" Grid.Column="4" HorizontalOptions="FillAndExpand" />
+                                <Label Text="{Binding Password}" Grid.Row="0" Grid.Column="4" HorizontalTextAlignment="Center" />
+                                <BoxView Color="LightGray" HeightRequest="1" Grid.Row="0" Grid.Column="5" HorizontalOptions="FillAndExpand" />
+                                <Label Text="{Binding Address}" Grid.Row="0" Grid.Column="5" HorizontalTextAlignment="Center" />
+                                <BoxView Color="LightGray" HeightRequest="1" Grid.Row="0" Grid.Column="6" HorizontalOptions="FillAndExpand" />
+                                <Label Text="{Binding DayOfBirth}" Grid.Row="0" Grid.Column="6" HorizontalTextAlignment="Center" />
+                                <BoxView Color="LightGray" HeightRequest="1" Grid.Row="0" Grid.Column="7" HorizontalOptions="FillAndExpand" />
+                                <Label Text="{Binding Gender}" Grid.Row="0" Grid.Column="7" HorizontalTextAlignment="Center" />
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

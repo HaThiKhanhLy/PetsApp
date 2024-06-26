@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.SearchResult"
+             Title="SearchResult"
+             Shell.NavBarIsVisible="False">
+    
+    <Grid RowDefinitions="Auto,*" Margin="10" RowSpacing="10">
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto,*">
+
+            <Image Grid.Column="0" HorizontalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Goback" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" Text="Search Results"></Label>
+        </Grid>
+       
+        <CollectionView x:Name="GetAllPets" Grid.Row="1" ItemsLayout="VerticalGrid,1" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="10" StrokeShape="RoundRectangle 20" Stroke="#F7F8F7" StrokeThickness="2" BackgroundColor="White" Padding="5">
+                        <Border.Shadow>
+                            <Shadow Brush="#F7F8F7" Opacity="5" Radius="200" Offset="0,0"/>
+                        </Border.Shadow>
+                        <HorizontalStackLayout Spacing="50" Padding="10">
+                            <Image Grid.Column="0" Source="{Binding Image}"  Aspect="AspectFill"
+                               HeightRequest="150" WidthRequest="150"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"/>
+                            <VerticalStackLayout Grid.Column="1"  Spacing="5" Padding="5">
+                                <Label Text="{Binding NamePets}" FontAttributes="Bold" FontSize="18" VerticalOptions="Center" />
+                                <Label TextColor="#BE0425" Text="{Binding Price}" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" />
+                                <Label Text="{Binding Species}" FontSize="16" VerticalOptions="Center" />
+                                <HorizontalStackLayout Spacing="10">
+                                    <Border StrokeShape="RoundRectangle 10" StrokeThickness="0" BackgroundColor="Orange" Padding="20,5,20,5">
+                                        <Image HeightRequest="30" WidthRequest="30" Source="cartwhite.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnAddToCartTapped" CommandParameter="{Binding ID}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Border>
+                                    <Button Padding="20,5,20,5" Text="Buy" BackgroundColor="Orange" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

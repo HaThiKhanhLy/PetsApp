@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:PetsApp.Models"
+             xmlns:vm="clr-namespace:PetsApp.ViewModel"
+             x:Class="PetsApp.Pages.PetDetails"
+             Title="PetDetails"
+             x:DataType="vm:PetsVM"
+             Shell.NavBarIsVisible="False"
+             
+             >
+    <Grid RowDefinitions="Auto,*" Margin="10" RowSpacing="10">
+        <Grid Grid.Row="0" ColumnDefinitions="*,*,*">
+
+            <Image Grid.Column="0" HorizontalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Goback" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" Text="Pets Details"></Label>
+        </Grid>
+    
+    <ScrollView Grid.Row="1">
+            <VerticalStackLayout Margin="10" Spacing="20" >
+         
+            <Border StrokeShape="RoundRectangle 20">
+                <Image Source="{Binding Image}" Aspect="AspectFit"></Image>
+            </Border>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" >
+                    <Label x:Name="Name" Grid.Column="0" Text="{Binding NamePets}" HorizontalOptions="Start" VerticalOptions="Start" FontAttributes="Bold" FontSize="20"></Label>
+                    <Label x:Name="PriceLabel" Grid.Column="1" Text="{Binding Price}" TextColor="#BE0425" HorizontalOptions="End" VerticalOptions="End" FontAttributes="Bold" FontSize="20"></Label>
+            </Grid>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" >
+                <Label Text="Species" FontAttributes="Bold" FontSize="16"></Label>
+                <Label Grid.Column="1" Text="{Binding Species}" TextColor="Black" HorizontalOptions="End" VerticalOptions="End" FontAttributes="Bold" FontSize="16"></Label>
+            </Grid>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" >
+                <Label Text="Stock" FontAttributes="Bold" ></Label>
+                <Label Grid.Column="1" Text="12" TextColor="Black" HorizontalOptions="End" VerticalOptions="End" FontAttributes="Bold" FontSize="16"></Label>
+            </Grid>
+           
+        
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10" >
+            <Frame Grid.Column="0" BackgroundColor="#A1D8FB">
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                <Label Text="Gender" TextColor="Gray"></Label>
+                <Label Text="{Binding Gender}" FontAttributes="Bold"></Label>
+                </VerticalStackLayout>
+            </Frame>
+            <Frame Grid.Column="1" BackgroundColor="#FEA99E">
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                    <Label Text="Age" TextColor="Gray"></Label>
+                    <Label Text="{Binding Age}" FontAttributes="Bold"></Label>
+
+                </VerticalStackLayout>
+            </Frame>
+            <Frame Grid.Column="2" BackgroundColor="#C4EAB2">
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                    <Label Text="Size" TextColor="Gray"></Label>
+                    <Label Text="{Binding Size}" FontAttributes="Bold"></Label>
+                </VerticalStackLayout>
+            </Frame>
+
+        </Grid>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+               
+                        <Border  Grid.Column="0" StrokeShape="RoundRectangle 10" StrokeThickness="0" BackgroundColor="Orange" Padding="20,5,20,5">
+                            <Image HeightRequest="30" WidthRequest="30" Source="cartwhite.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnAddToCartTapped" CommandParameter="{Binding ID}" />
+                                </Image.GestureRecognizers>
+
+                            </Image>
+                        </Border>
+                    
+                    <Button Grid.Column="1" Text="Buy now" BackgroundColor="Orange" Clicked="BuyNowClicked"></Button>
+
+            </Grid>
+            <Label Text="Desciption" FontAttributes="Bold" FontSize="16"></Label>
+        <Label Text="{Binding Description}"></Label>
+    </VerticalStackLayout>
+           
+    </ScrollView>
+    </Grid>
+</ContentPage>

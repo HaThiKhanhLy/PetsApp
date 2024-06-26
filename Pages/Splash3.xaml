@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.Splash3"
+             Title="Splash3"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="*,*">
+        <Border Grid.Row="0"
+             BackgroundColor="Orange">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0,0,150,150"/>
+            </Border.StrokeShape>
+            <Grid RowDefinitions="3*,7*">
+                <Image
+                 Grid.RowSpan="2"
+                 Source="animal.png"
+                 Aspect="AspectFit"    
+             />
+            </Grid>
+        </Border>
+        <VerticalStackLayout
+          Grid.Row="1"
+          Spacing="20"
+          HorizontalOptions="Center"
+          Padding="30"
+         >
+            <Label
+             Text="Welcome to the world of pets"
+             Style="{StaticResource Headline}"
+             SemanticProperties.HeadingLevel="Level1"
+             FontFamily="aAbstractGroovy"
+             TextColor="Black"
+
+             />
+            <Label
+             Text="Welcome to the wonderful world of pets! Discover the joy and companionship they bring into our lives. Whether it's a loyal dog, a playful cat, or any other furry friend, you're in for a delightful journey."            
+             FontFamily="RobotoL"
+             TextColor="Black"
+             HorizontalOptions="Center"
+             FontSize="14"
+             HorizontalTextAlignment="Center"
+             CharacterSpacing="1"
+             />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button WidthRequest="10" HeightRequest="10" BackgroundColor="LightGray" CornerRadius="5" Margin="5"/>
+                <Button WidthRequest="10" HeightRequest="10" BackgroundColor="LightGray" CornerRadius="5" Margin="5"/>
+                <Button WidthRequest="10" HeightRequest="10" BackgroundColor="LightGray" CornerRadius="5" Margin="5"/>
+            </StackLayout>
+            <Grid 
+             ColumnDefinitions="*,*,*"
+             Padding="20" Margin="20"  >
+                <Button
+              
+              Text="Back" 
+              SemanticProperties.Hint="Counts the number of times you click"
+              HorizontalOptions="Fill" 
+              CornerRadius="30"
+             BackgroundColor="FloralWhite"
+             TextColor="Orange"
+             FontAttributes="Bold"
+             WidthRequest="150"
+             Grid.Column="0"
+             Clicked="BtnBack"/>
+                <Button
+              
+              Text="Continue" 
+              SemanticProperties.Hint="Counts the number of times you click"
+              HorizontalOptions="Fill" 
+              CornerRadius="30"
+             BackgroundColor="FloralWhite"
+             TextColor="Orange"
+             FontAttributes="Bold"
+             WidthRequest="150"
+             Grid.Column="2"
+             Clicked="BtnContinue"/>
+            </Grid>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

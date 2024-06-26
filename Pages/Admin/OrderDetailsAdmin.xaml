@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.Admin.OrderDetailsAdmin"
+             Title="OrderDetailsAdmin"
+             Shell.NavBarIsVisible="False">
+    <StackLayout Margin="20">
+        <Grid ColumnDefinitions="*,*,*" Margin="10">
+            <Image  Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+             <TapGestureRecognizer Tapped="Goback" />
+         </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Text="OrderDetails" VerticalTextAlignment="Center"></Label>
+
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.ColumnSpan="2" RowSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    
+                </Grid.ColumnDefinitions>
+
+                <ProgressBar x:Name="OrderStatusProgressBar"
+                Grid.ColumnSpan="4"
+                
+                BackgroundColor="LightGray"
+                ProgressColor="Green"
+                HeightRequest="20"
+                Margin="30"/>
+                <Label x:Name="CancelStatusLabel" Text="X" TextColor="Red" FontAttributes="Bold" FontSize="30" Margin="15,15,0,0"></Label>
+                <StackLayout Grid.Column="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="5">
+                    <Image Source="choices.png"
+                 HeightRequest="30"
+                 Aspect="AspectFit" />
+                    <Label Text="Ordered"
+             FontSize="Small"
+             TextColor="Gray"
+             HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="5">
+                    <Image Source="checklist2.png"
+                     HeightRequest="30"
+                     Aspect="AspectFit" />
+                    <Label Text="Order confirmed"
+                     FontSize="Small"
+                     TextColor="Gray"
+                     HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="2"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                         Spacing="5">
+                    <Image Source="tracking.png"
+             HeightRequest="30"
+             Aspect="AspectFit" />
+                    <Label Text="Delivering"
+             FontSize="Small"
+             TextColor="Gray"
+             HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="3"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="5">
+                    <Image Source="shipped.png"
+                     HeightRequest="30"
+                     Aspect="AspectFit" />
+                    <Label Text="Successful delivery"
+                     FontSize="Small"
+                     TextColor="Gray"
+                     HorizontalTextAlignment="Center" />
+                </StackLayout>
+            
+            </Grid>
+
+            <!--<Label Grid.Column="1"
+         HorizontalTextAlignment="Center"
+         Text="{Binding OrderStatusProgressText}"
+         VerticalOptions="Center" />-->
+        </Grid>
+
+        <HorizontalStackLayout Spacing="20">
+            <StackLayout>
+                <Label Text="" FontSize="Small" TextColor="Gray" HorizontalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="" FontSize="Small" TextColor="Gray" HorizontalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="" FontSize="Small" TextColor="Gray" HorizontalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout>
+                <Label Text="" FontSize="Small" TextColor="Gray" HorizontalTextAlignment="Center" />
+            </StackLayout>
+        </HorizontalStackLayout>
+
+        <ListView x:Name="OrderDetailsMM">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame BorderColor="Gray"
+                           CornerRadius = "10"
+                           HasShadow="True" Margin="0,0,0,20" >
+                            <HorizontalStackLayout Spacing="20">
+
+                                <Image Source="{Binding Pet.Image}"                                 
+                             Aspect="AspectFill"
+                              HeightRequest="150" WidthRequest="150"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                                <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*" ColumnSpacing="20" RowSpacing="10">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="OrderID: " FontSize="Medium" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding OrderID}" FontSize="Medium" />
+                                    <Label Grid.Row="1" Grid.Column="0" Text="NamePets: " FontSize="Small" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Pet.NamePets}" FontSize="Small" />
+                                    <Label Grid.Row="2" Grid.Column="0" Text="Price: " FontSize="Small" />
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Pet.Price}" FontSize="Small" />
+                                    <Label Grid.Row="3" Grid.Column="0" Text="Payment: " FontSize="Small" />
+                                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding payment}" FontSize="Small" />
+                                    <Label Grid.Row="4" Grid.Column="0" Text="Quantity: " FontSize="Small" />
+                                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding Quantity}" FontSize="Small" />
+                                </Grid>
+                            </HorizontalStackLayout>
+                        </Frame>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout>
+            <Frame BorderColor="Gray" CornerRadius="10" HasShadow="True" Margin="0,0,0,20">
+                <HorizontalStackLayout Spacing="20">
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*" ColumnSpacing="20" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Recipient Name: " FontSize="Medium" />
+                        <Label x:Name="RecipientNameLabel" Grid.Row="0" Grid.Column="1" Text="{Binding RecipientName}" FontSize="Medium" />
+                        <Label Grid.Row="1" Grid.Column="0" Text="Recipient Phone: " FontSize="Small" />
+                        <Label x:Name="RecipientPhoneLabel" Grid.Row="1" Grid.Column="1" Text="{Binding RecipientPhone}" FontSize="Small" />
+                        <Label Grid.Row="2" Grid.Column="0" Text="Address: " FontSize="Small" />
+                        <Label x:Name="AddressLabel" Grid.Row="2" Grid.Column="1" Text="{Binding Address}" FontSize="Small" />
+                    </Grid>
+                </HorizontalStackLayout>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

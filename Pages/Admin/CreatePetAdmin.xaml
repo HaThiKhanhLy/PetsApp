@@ -1,0 +1,36 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsApp.Pages.Admin.CreatePetAdmin"
+             Title="CreatePetAdmin"
+             Shell.NavBarIsVisible="False">
+    <ScrollView Orientation="Vertical">
+    <VerticalStackLayout Margin="20" Padding="10" Spacing="20">
+        <Grid ColumnDefinitions="*,*,*">
+            <Image  Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Source="arrow.png" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Goback" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="1" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Text="Create Pet" VerticalTextAlignment="Center"></Label>
+
+        </Grid>
+        <Entry Placeholder="NamePets" x:Name="NamePetsEntry" />
+            <Picker Title="Select Pet Type" x:Name="PetTypePicker" SelectedIndexChanged="PetTypePicker_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <!-- Dữ liệu sẽ được đặt ở đây -->
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Entry Placeholder="Gender" x:Name="GenderEntry" />
+        <Entry Placeholder="Size" x:Name="SizeEntry" />
+        <Entry Placeholder="Age" x:Name="AgeEntry" />
+        <Entry Placeholder="Description" x:Name="DescriptionEntry" />
+        <Entry Placeholder="Species" x:Name="SpeciesEntry" />
+        <Entry Placeholder="Image" x:Name="ImageEntry" />
+        <Entry Placeholder="Price" x:Name="PriceEntry" />
+        <Entry Placeholder="Stock" x:Name="StockEntry" />
+        <Entry Placeholder="Unit" x:Name="UnitEntry" />
+            <Button Text="Create" x:Name="CreateButton" BackgroundColor="Orange" Clicked="CreateButton_Clicked" />
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
